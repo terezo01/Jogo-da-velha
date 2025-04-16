@@ -16,11 +16,10 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .game {
-  z-index: 100;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -31,9 +30,9 @@ main {
 }
 
 .behind-game {
-  z-index: 0;
-  width: 500px;
-  height: 500px;
+  z-index: 10;
+  width: 400px;
+  height: 400px;
   background-color: black;
 }
 
@@ -44,7 +43,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 7rem;
+  font-size: 6rem;
 }
 
 .escolhidaP1 {
@@ -54,3 +53,30 @@ main {
 .escolhidaP2 {
   color: red;
 }
+
+#victory{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 0;
+  background-color: white;
+  padding: 40px;
+  color: black;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px 1000px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#close-overlay{
+  font-size: 1.2rem;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+}
+
+

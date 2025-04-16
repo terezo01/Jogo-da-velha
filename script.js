@@ -27,7 +27,10 @@ let p2Win = 0;
 
 const velhas = document.querySelectorAll(".velhas");
 const vez = document.getElementById("vez");
-const vitorias = document.getElementById("vitorias");
+const vitorias = document.querySelector(".vitorias");
+const victory = document.getElementById('victory');
+const close = document.getElementById('close-overlay');
+const winner = document.getElementById('winner');
 
 velhas.forEach((velha) => {
   velha.addEventListener("click", () => {
@@ -42,7 +45,7 @@ velhas.forEach((velha) => {
       escolhidaP2 = false;
       escolhidaP1 = true;
 
-      vez.innerHTML = "Vez do Player 2";
+      vez.innerHTML = "Vez do Player-2";
     } else {
       velhaP2.push(velha.id);
 
@@ -52,31 +55,36 @@ velhas.forEach((velha) => {
       escolhidaP1 = false;
       escolhidaP2 = true;
 
-      vez.innerHTML = "Vez do Player 1";
+      vez.innerHTML = "Vez do Player-1";
     }
 
     if (checkWin(velhaP1)) {
       p1Win += 1;
       lock = true;
-      setTimeout(() => {
-        clearGame();
-      }, 1000);
+      winner.innerHTML = "O player-1 ganhou"
     }
 
     if (checkWin(velhaP2)) {
       p2Win += 1;
       lock = true;
-      setTimeout(() => {
-        clearGame();
-      }, 1000);
+      winner.innerHTML = "O player-2 ganhou"
     }
 
-    if (velhaP1.length === 5) {
+    if (velhaP1.length === 5 && !checkWin(velhaP1)) {
+      lock = true
+      winner.innerHTML = "Deu velha!"
       vez.innerHTML = "O jogo acabou";
+    }
+
+    if(lock){
+      victoryAppear()
       setTimeout(() => {
         clearGame();
-      }, 1000);
-    }
+      }, 500);
+      setTimeout(()=>{
+        closeOverlay();
+      }, 5000)
+    } 
 
     vitorias.innerHTML = `Player-1 ${p1Win} X ${p2Win} Player-2`;
   });
@@ -89,7 +97,7 @@ function clearGame() {
   escolhidaP1 = false;
   escolhidaP2 = false;
 
-  vez.innerHTML = "Vez do Player 1";
+  vez.innerHTML = "Vez do Player-1";
 
   lock = false;
 
@@ -99,3 +107,18 @@ function clearGame() {
     velha.classList.remove("escolhidaP2");
   });
 }
+
+function victoryAppear(){
+  victory.style.opacity = '1';
+  victory.style.zIndex = '20';
+
+}
+
+function closeOverlay() {
+  victory.style.opacity = '0'
+  victory.style.zIndex = '0'
+}
+
+close.addEventListener('click', closeOverlay);
+
+
