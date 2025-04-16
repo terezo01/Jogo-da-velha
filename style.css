@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-height: 100vh;
+  width: 100%;
+  background-color: rgb(16, 63, 107);
+  font-family: monospace;
+  color: white;
+}
+
+main {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.game {
+  z-index: 100;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+}
+
+.behind-game {
+  z-index: 0;
+  width: 500px;
+  height: 500px;
+  background-color: black;
+}
+
+.velhas {
+  width: 100%;
+  height: auto;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7rem;
+}
+
+.escolhidaP1 {
+  color: blue;
+}
+
+.escolhidaP2 {
+  color: red;
+}
